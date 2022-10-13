@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { Navigation } from "./components";
+import { Homepage, AboutPage, PokemonDetails } from "./pages";
+
+//1. I want homepage on the path "/"
+//2. I want my about page on the path "/about"
+//3. I want my navbar in all pages
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation />
+      <Routes>
+        <Route path="/pokemon/:name" element={<PokemonDetails />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/" element={<Homepage />} />
+      </Routes>
     </div>
   );
 }
